@@ -1,0 +1,93 @@
+.button {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+thead {
+    background-color: rgba(128, 128, 128, 0.8);
+    color: white;
+}
+
+tbody {
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.block {
+    text-align: center;
+}
+
+.popup {
+    background-color: rgba(0, 0, 0, 0.7);
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 1;
+    display: none;
+}
+
+.inPopup {
+    width: 400px;
+    height: 250px;
+    margin: auto;
+    background: #fff;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    padding: 20px;
+    color: DeepSkyBlue;
+}
+
+.def {
+    margin-bottom: 20px;
+}
+
+
+
+
+@keyframes fadey {
+    0% {
+        opacity: 0;
+    }
+    15% {
+        opacity: 1;
+    }
+    85% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+figure#slideshow {
+    z-index: -10;
+    width: 100%;
+    height: auto;
+    margin: -70px auto;
+    position: fixed;
+}
+
+figure#slideshow img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: auto;
+    opacity: 0;
+}
+
+figure#slideshow img:first-child {
+    position: relative;
+}
+
+.visitCon {
+    transition: 0.2s;
+}
+
+.visitCon:hover {
+    background: green
+}

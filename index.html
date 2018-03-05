@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link href="css/style.css" rel="stylesheet"> </head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+
+<body data-ng-app="SombraApp" ng-controller="CapitalsCtrl">
+    <figure id="container">
+        <figure id="slideshow">
+            <img src="css/monaco.jpg" alt>
+            <img src="css/qr.jpg" alt>
+            <img src="css/qw.jpg" alt>
+            <img src="css/fff.jpg" alt>
+        </figure>
+    </figure>
+    <div class="popup">
+        <div class="inPopup">
+            <form ng-submit="addText(myText, myy)">
+                <div class="form-group">
+                    <label>Country:</label>
+                    <input type="text" class="form-control" ng-model="myText">
+                    <label>City:</label>
+                    <input type="text" class="form-control" ng-model="myy">
+                    <br>
+                    <button type="submit" class="btn btn-success" ng-click="closePopup()">Add</button>
+                    <button type="button" class="btn btn-danger" ng-click="closePopup()">Close</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div>
+        <div class=" col-md-8 offset-md-2 block">
+            <button type="button" class="btn btn-primary btn-lg btn-block button" ng-click="openPopup()">Add city</button>
+            <button type="button" class="btn btn-danger def" ng-click="default()">To default</button>
+            <table class="table ">
+                <thead>
+                    <tr>
+                        <th ng-click="setOrderProperty('name')">Country</th>
+                        <th ng-click="setOrderProperty('capital')">Capital</th>
+                        <th ng-click="setOrderProperty('weather')">Weather &#8451;</th>
+                        <th>Weather Condition</th>
+                        <th>Visited places</th>
+                        <th>Want to visit</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="country in countries | orderBy:orderProperty">
+                        <td>{{country.name}}</td>
+                        <td>{{country.capital}}</td>
+                        <td id="{{(country.capital)}}" class="temp">{{country.weather}}</td>
+                        <td id="{{(country.capital)}}condition" class="temp" >{{weather(country.capital)}}</td>
+                        <td id="{{(country.id)}}" class="visitCon" ng-click="yes($event)">{{country.visited}} +</td>
+                        <td id="{{(country.id)}}" class="visitCon" ng-click="yesToVisit($event)">{{country.toVisit}} +</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+<script src="libs/jquery.min.js" type="text/javascript"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="libs/angular.min.js" type="text/javascript"></script>
+<script src="app/app.js" type="text/javascript"></script>
+<script src="app/controllers/CapitalsController.js" type="text/javascript"></script>
+<script>
+    window.onload = function() {
+        imgs = document.getElementById('slideshow').children;
+        interval = 8000;
+        currentPic = 0;
+        imgs[currentPic].style.webkitAnimation = 'fadey ' + interval + 'ms';
+        imgs[currentPic].style.animation = 'fadey ' + interval + 'ms';
+        var infiniteLoop = setInterval(function() {
+            imgs[currentPic].removeAttribute('style');
+            if (currentPic == imgs.length - 1) {
+                currentPic = 0;
+            } else {
+                currentPic++;
+            }
+            imgs[currentPic].style.webkitAnimation = 'fadey ' + interval + 'ms';
+            imgs[currentPic].style.animation = 'fadey ' + interval + 'ms';
+        }, interval);
+    };
+   
+</script>
+
+</html>
